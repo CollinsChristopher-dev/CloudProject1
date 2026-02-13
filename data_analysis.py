@@ -101,8 +101,4 @@ def main():
     print("\nDone. Files saved in outputs folder.")
 
 if __name__ == "__main__":
-<<<<<<< HEAD
     main()
-=======
-    main()
->>>>>>> 7f17f283465160c925e226e116311860a00dddfd

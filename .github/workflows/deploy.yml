@@ -1,0 +1,39 @@
+name: CI/CD Simulation (Diet Analysis)
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build-test-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Run tests (pytest)
+        run: |
+          pytest -q
+
+      - name: Build Docker image
+        run: |
+          docker build -t diet-analysis:${{ github.sha }} .
+
+      - name: Simulated deployment (run container and show output)
+        run: |
+          echo "=== Simulated deploy: running container ==="
+          docker run --rm diet-analysis:${{ github.sha }}
+          echo "=== Done ==="
