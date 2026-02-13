@@ -1,4 +1,8 @@
 pandas
 numpy
 matplotlib
+<<<<<<< HEAD
 seaborn
+=======
+seaborn
+>>>>>>> 7f17f283465160c925e226e116311860a00dddfd
